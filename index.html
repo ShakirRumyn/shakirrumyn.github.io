@@ -3,31 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trump Term Countdown</title>
+    <title>Trump Countdown</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Georgia", serif;
             text-align: center;
             padding: 50px;
-            background-color: #f4f4f4;
+            background-color: #F5E6C4;
+            color: #000;
         }
         h1 {
-            color: #333;
+            font-size: 80px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
         #countdown {
-            font-size: 24px;
-            font-weight: bold;
-            background: white;
-            display: inline-block;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Arial", sans-serif;
         }
+        .time {
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .months { font-size: 50px; }
+        .days { font-size: 40px; }
+        .hours { font-size: 30px; }
+        .minutes { font-size: 25px; }
+        .seconds { font-size: 20px; }
     </style>
 </head>
 <body>
-    <h1>Countdown Until Trump's Term Ends</h1>
-    <div id="countdown"></div>
+    <h1>Trump</h1>
+    <div id="countdown">
+        <div class="time months" id="months"></div>
+        <div class="time days" id="days"></div>
+        <div class="time hours" id="hours"></div>
+        <div class="time minutes" id="minutes"></div>
+        <div class="time seconds" id="seconds"></div>
+    </div>
 
     <script>
         function updateCountdown() {
@@ -41,8 +56,11 @@
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-            document.getElementById("countdown").innerHTML = 
-                `${months} Months, ${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
+            document.getElementById("months").innerHTML = `${months} Months`;
+            document.getElementById("days").innerHTML = `${days} Days`;
+            document.getElementById("hours").innerHTML = `${hours} Hours`;
+            document.getElementById("minutes").innerHTML = `${minutes} Minutes`;
+            document.getElementById("seconds").innerHTML = `${seconds} Seconds`;
         }
         
         setInterval(updateCountdown, 1000);
